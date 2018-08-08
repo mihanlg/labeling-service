@@ -1,0 +1,9 @@
+<div class="navigator">
+    {% if page > 1 %} <a href="/{{page_type}}?perpage={{perpage}}&page=1"><<</a>{% endif %}
+    {% if page > 1 %} <a href="/{{page_type}}?perpage={{perpage}}&page={{page-1}}"><</a>{% endif %}
+    {% if n_found %}
+    <a href="/{{page_type}}?perpage={{perpage}}&page={{page}}">{{(page-1)*perpage+1}}{% if n_labeled-((page-1)*perpage+1) %}-{{[page*perpage, n_found]|min}}{% endif %}</a>
+    {% if page < max_page %}<a href="/{{page_type}}?perpage={{perpage}}&page={{page+1}}">></a>{% endif %}
+    {% if page < max_page %}<a href="/{{page_type}}?perpage={{perpage}}&page={{max_page}}">>></a>{% endif %}
+    {% endif %}
+</div>

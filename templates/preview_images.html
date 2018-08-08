@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if page_type=='labeled' %}<title>Размеченные изображения</title>{% endif %}
+    {% if page_type=='unlabeled' %}<title>Неразмеченные изображения</title>{% endif %}
+    <script src="{{ url_for('static', filename='imagesloaded.pkgd.min_4.1.1.js') }}"></script>
+    <script src="{{ url_for('static', filename='jquery_1.9.1.js') }}"></script>
+    <script src="{{ url_for('static', filename='grid.js') }}"></script>
+    <script src="{{ url_for('static', filename='preview_script.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='preview_style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+<page>
+    {% include 'header.html' %}
+    <div class="content">
+        {% if page_type=='labeled' %}
+        <div class="selected_labels">
+            {% for label in selected_labels %}
+            <div class="selected_label"><input id="{{label}}_checkbox" class="css-checkbox" data-label="{{label}}" type="checkbox" onclick="updatePage();" checked ><label for="{{label}}_checkbox" class="css-label">{{visible_labels[label]}} ({{labels_count[label]}})</label></div>
+            {% endfor %}
+            {% for label in labels if label not in selected_labels %}
+            <div class="selected_label"><input id="{{label}}_checkbox" class="css-checkbox" data-label="{{label}}" type="checkbox" onclick="updatePage();"><label for="{{label}}_checkbox" class="css-label">{{visible_labels[label]}} ({{labels_count[label]}})</label></div>
+            {% endfor %}
+            {% if labels|count %}
+            <div class="reset_labels" onclick="location.href='/labeled'">Сбросить</div>
+            {% endif %}
+        </div>
+        {% endif %}
+        <div class="found_images">Найдено {{n_found}} изображен{{ending(n_found)}}</div>
+        <div class="grid">
+            {% for image_path, labels in labeling.items() %}
+            <div class="grid-item">
+                <div class="grid-item-content">
+                    <div class="grid-item-position">#{{(page-1)*perpage+loop.index}}</div>
+                    <img class="preview" data-path="{{image_path}}" title="Редактировать разметку" onclick="editLabels(this);" src="data:image/x-icon;base64,{{path_to_base64(image_path)}}">
+                    <div>
+                        {% for label in labels %}
+                        <div class="label-text" data-label="{{label}}" onclick="location.href = '/labeled?labels={{label}}'">{{visible_labels[label]}}</div>{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% include 'navigator.html' %}
+    </div>
+    {% include 'footer.html' %}
+</page>
+<script>
+    window.onload = resizeAllGridItems();
+    window.addEventListener("resize", resizeAllGridItems);
+    allItems = document.getElementsByClassName("grid-item");
+
+    for(var x=0; x<allItems.length; x++) {
+        imagesLoaded(allItems[x], resizeInstance);
+    }
+
+    // $(window).on('focus', function() {
+    //     updatePage();
+    // });
+
+
+    // var $container = $('.grid');
+    // $container.imagesLoaded(function(){
+    //   $container.masonry({
+    //         columnWidth: '.grid-sizer',
+    //         itemSelector: '.grid-item',
+    //         percentPosition: true,
+    //         fitWidth: true
+    //   });
+    // });
+
+    // $(document).ready(function() {
+    //     var container = $('.grid');
+    //     container.masonry({
+    //         // options
+    //         columnWidth: '.grid-sizer',
+    //         itemSelector: '.grid-item',
+    //         percentPosition: true,
+    //         fitWidth: true
+    //     });
+    // });
+</script>
+</body>
+</html>

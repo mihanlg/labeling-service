@@ -1,0 +1,184 @@
+@media (max-width: 1200px) {
+    .labeled_images {
+        -moz-column-count: 4;
+        -webkit-column-count: 4;
+        column-count: 4;
+    }
+}
+@media (max-width: 1000px) {
+    .labeled_images {
+        -moz-column-count: 3;
+        -webkit-column-count: 3;
+        column-count: 3;
+    }
+}
+@media (max-width: 800px) {
+    .labeled_images {
+        -moz-column-count: 2;
+        -webkit-column-count: 2;
+        column-count: 2;
+    }
+}
+@media (max-width: 400px) {
+    .labeled_images {
+        -moz-column-count: 1;
+        -webkit-column-count: 1;
+        column-count: 1;
+    }
+}
+
+body {
+    background: #eee;
+}
+
+.selected_labels {
+    text-align: center;
+    /*padding: 10px;*/
+}
+
+.selected_labels_text {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.selected_labels input[type=checkbox].css-checkbox {
+    position:absolute; z-index:-1000;
+    left:-1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height:1px;
+    width:1px;
+    margin:-1px;
+    padding:0;
+    border:0;
+}
+
+.selected_labels input[type=checkbox].css-checkbox + label.css-label {
+    padding-left: 20px;
+    height: 18px;
+    display: inline-block;
+    line-height: 18px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 18px 36px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.selected_labels input[type=checkbox].css-checkbox:checked + label.css-label {
+    background-position: 0 -18px;
+}
+
+.selected_labels label.css-label {
+    background-image:url(http://csscheckbox.com/checkboxes/u/csscheckbox_4f6bc9a7cc47504b9c36e04aa489f19e.png);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -html-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.selected_label {
+    display: inline-block;
+    padding: 2px 7px 2px 7px;
+    margin: 10px 2px;
+    background: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ccc;
+    cursor: pointer;
+}
+
+.reset_labels {
+    display: inline-block;
+    padding: 2px 7px 2px 7px;
+    margin: 2px;
+    background: #f2f2f2;
+    height: 18px;
+    line-height: 18px;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ccc;
+    cursor: pointer;
+}
+
+.found_images {
+    text-align: center;
+    font-size: 18px;
+    background-color: #e2e2e2;
+    padding: 10px;
+}
+
+.grid {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: 20px;
+    padding: 20px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.grid-item {
+    /*min-width: 160px;*/
+    width: 100%;
+}
+
+/*.grid-item-padding {*/
+    /*!*box-shadow: 0 0 5px #ccc;*!*/
+    /*!*border-radius: 5px;*!*/
+    /*padding: 5px;*/
+    /*overflow: hidden;*/
+    /*text-align: center;*/
+    /*!*background: #fff;*!*/
+    /*position: relative;*/
+/*}*/
+
+.grid-item-content {
+    box-shadow: 0 0 5px #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    overflow: hidden;
+    text-align: center;
+    background: #fff;
+    position: relative;
+}
+
+.grid-item-content img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+.grid-item-position {
+    font-size: 10pt;
+    margin: 10px;
+    padding: 2px;
+    right: 0px;
+    top: 0px;
+    position: absolute;
+    color: #e8e8e8;
+    background-color: rgb(80, 80, 80);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.preview {
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ccc;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.label-text {
+    border-radius: 7px;
+    background-color: #ffcc33;
+    display: inline-block;
+    padding: 0px 4px 2px 4px;
+    margin: 1px;
+    cursor: pointer;
+}
+
+.navigator {
+    text-align: center;
+}

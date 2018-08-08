@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Разметка изображения</title>
+    <script src="{{ url_for('static', filename='jquery_1.9.1.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='labeling_script.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='label_style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+{% set keys = '1234567890qwertyuiopasdfghjklzxcvbnm' %}
+<body>
+    <page>
+        {% include 'header.html' %}
+        <div class="content">
+            <div class="labeling">
+                <div class="title">Отметьте объекты:</div>
+                {% for label in labels %}
+                <div class="label">
+                    <label class="key" for="{{label}}_checkbox">[{{keys[loop.index-1].upper()}}]</label><input id="{{label}}_checkbox" data-key="{{keys[loop.index-1]}}" data-label="{{label}}" type="checkbox"><label class="text" for="{{label}}_checkbox">{{visible_labels[label]}}</label>
+                </div>
+                {% endfor %}
+                <div class="buttons">
+                    <label class="key" for="next_button">[⇧+A]</label><input id="next_button" class="green" type="button" value="Сохранить и продолжить" onClick="nextImage();">
+                    <label class="key" for="save_button">[⇧+S]</label><input id="save_button" class="black" type="button" value="Сохранить" onClick="saveImage();">
+                    <label class="key" for="miss_button">[⇧+D]</label><input id="miss_button" class="grey" type="button" value="Пропустить" onClick="skipImage();">
+                    <label class="key" for="back_button">[⇧+F]</label><input id="back_button" class="grey" type="button" value="Назад" onClick="goBack();">
+                    <label class="key" for="remove_button">[⇧+G]</label><input id="remove_button" class="red" type="button" value="Удалить изображение" onClick="deleteImage();">
+                </div>
+            </div><div class="preview">
+                <img src="data:image/x-icon;base64,{{image_base64}}" data-path="{{image_path}}">
+            </div>
+        </div>
+        {% include 'footer.html' %}
+    </page>
+</body>
+</html>

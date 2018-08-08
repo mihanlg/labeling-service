@@ -1,0 +1,150 @@
+@media screen and (min-width: 1035px)
+{
+     .labeling {
+         float: left;
+     }
+}
+
+.preview {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    max-width: 600px;
+    margin: 15px 0px;
+}
+
+.preview img {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #c2c2c2;
+    max-width: 100%;
+}
+
+.labeling {
+    background-color: #f8f8f8;
+    vertical-align: top;
+    text-align: left;
+    display: inline-block;
+    max-width: 375px;
+    width: 375px;
+    margin: 15px 30px;
+    padding: 0 0 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #c2c2c2;
+    overflow: hidden;
+}
+
+.labeling .title {
+    text-align: center;
+    font-size: 16px;
+    background-color: #bbb;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.label {
+    margin: 3px 10px;
+}
+
+.label label.key {
+    height:24px;
+    display:inline-block;
+    line-height:24px;
+    font-size: 16px;
+    vertical-align:middle;
+    cursor:pointer;
+    width: 55px;
+    color: #ccc;
+}
+
+.label input[type=checkbox] {
+    position:absolute;
+    z-index:-1000;
+    left:-1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height:1px;
+    width:1px;
+    margin:-1px;
+    padding:0;
+    border:0;
+}
+
+.label input[type=checkbox] + label.text {
+    padding-left:29px;
+    height:24px;
+    display:inline-block;
+    line-height:24px;
+    background-repeat:no-repeat;
+    background-position: 0 0;
+    font-size: 16px;
+    vertical-align:middle;
+    cursor:pointer;
+}
+
+.label input[type=checkbox]:checked + label.text {
+    background-position: 0 -24px;
+}
+
+.label label.text {
+    background-image: url("data:image/png;base64,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");
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -html-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.buttons {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.buttons label.key {
+    height: 29px;
+    display: inline-block;
+    line-height: 24px;
+    font-size: 14px;
+    vertical-align: middle;
+    cursor: pointer;
+    width: 55px;
+    color: #ccc;
+    text-align: left;
+}
+
+.buttons input {
+    border: none;
+    color: white;
+    padding: 6px 16px;
+    text-align: center;
+    text-decoration: none;
+    /*display: inline-block;*/
+    font-size: 14px;
+    font-family: "Exo 2";
+    cursor: pointer;
+    border-radius: 5px;
+    width: 300px;
+    box-shadow: 0px 0px 5px #c2c2c2;
+}
+
+.buttons input:hover {
+    filter: brightness(95%);
+}
+
+.buttons .grey {
+    background-color: #999;
+}
+
+.buttons .red {
+    background-color: #f44336;
+}
+
+.buttons .green {
+    background-color: #4CAF50;
+}
+
+.buttons .black {
+    background-color: #555;
+}
